@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">GuardaTicket</string>
+    <string name="salvar">Salvar</string>
+    <string name="excluir">Excluir</string>
+    <string name="data">Informe a data</string>
+    <string name="que_dia_hoje">Que dia é hoje?</string>
+    <string name="em_que_per_odo_estamos">Em que período estamos?</string>
+    <string name="qual_foi_o_hor_rio_de_entrada">Qual foi o horário de entrada?</string>
+    <string name="todo">TODO</string>
+    <string name="informe_a_data">Informe a data</string>
+</resources>
