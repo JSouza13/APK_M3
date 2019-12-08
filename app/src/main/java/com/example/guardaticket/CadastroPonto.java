@@ -1,23 +1,32 @@
 package com.example.guardaticket;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.guardaticket.model.PontoDAO;
 import com.example.guardaticket.model.PontoModel;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.UUID;
 
 public class CadastroPonto extends AppCompatActivity {
 
@@ -26,12 +35,23 @@ public class CadastroPonto extends AppCompatActivity {
     private EditText editData;
     private TimePicker timePicker;
 
+    ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_ponto);
         timePicker = findViewById(R.id.timePicker1);
         timePicker.setIs24HourView(true);
+
+        imageView = findViewById(R.id.btnFoto);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirCamera(v);
+            }
+        });
 
         editData = findViewById(R.id.etData);
         idPonto = getIntent().getStringExtra("pontoId");
@@ -45,6 +65,8 @@ public class CadastroPonto extends AppCompatActivity {
 
             timePicker.setHour(ponto.getHoras());
             timePicker.setMinute(ponto.getMinutos());
+
+            attFotografiaNaTela();
 
             DateFormat formatter = android.text.format.DateFormat.getDateFormat(getApplicationContext());
             String dataFormatada = formatter.format(ponto.getDate().getTime());
@@ -108,4 +130,57 @@ public class CadastroPonto extends AppCompatActivity {
         );
         datePicker.show();
     }
+
+    public void abrirCamera(View v){
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        File arquivo = null;
+        try{
+            arquivo = criaArquivo();
+
+        }catch (IOException ex){
+            Toast.makeText(this, "Não foi possível criar arquivo para foto", Toast.LENGTH_LONG).show();
+        }
+
+        if(arquivo != null){
+            Uri fotoUri = FileProvider.getUriForFile(this, "com.example.guardaticket.fileprovider", arquivo);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, fotoUri);
+            startActivityForResult(intent, 1);
+        }
+    }
+
+
+    String caminhoDaFoto = null;
+
+    private File criaArquivo() throws IOException{
+        String nome = UUID.randomUUID().toString();
+
+        File diretorio = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File foto = File.createTempFile(nome, ".jpg", diretorio);
+
+        caminhoDaFoto = foto.getAbsolutePath();
+        return foto;
+
+    }
+
+    private void attFotografiaNaTela(){
+        if(ponto.getFoto() != null){
+            imageView.setImageURI(Uri.parse(ponto.getFoto()));
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1){
+            if(resultCode == RESULT_OK){
+
+                ponto.setFoto( caminhoDaFoto );
+                attFotografiaNaTela();
+
+            }
+        }
+    }
+
 }
