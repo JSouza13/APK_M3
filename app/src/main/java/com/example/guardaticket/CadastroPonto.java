@@ -59,6 +59,12 @@ public class CadastroPonto extends AppCompatActivity {
             ponto = new PontoModel();
             Button btnExcluir = findViewById(R.id.btnExcluir);
             btnExcluir.setVisibility(View.INVISIBLE);
+
+            Calendar dataSelecionada = Calendar.getInstance();
+
+            DateFormat formatter = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+            String  dataSelecionadaFormatada = formatter.format(dataSelecionada.getTime());
+            editData.setText(dataSelecionadaFormatada);
         }
         else{
             ponto = PontoDAO.obterInstancia().getObjectId(idPonto);
@@ -77,6 +83,11 @@ public class CadastroPonto extends AppCompatActivity {
     public void salvar(View v){
         ponto.setHoras(timePicker.getHour());
         ponto.setMinutos(timePicker.getMinute());
+
+        if (editData.getText().equals("")) {
+            Toast.makeText(this, "Favor informe a data", Toast.LENGTH_LONG);
+            return;
+        }
 
         if(idPonto == null){
             PontoDAO.obterInstancia().addOnList(ponto);
