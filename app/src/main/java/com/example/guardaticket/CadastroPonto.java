@@ -98,6 +98,7 @@ public class CadastroPonto extends AppCompatActivity {
                         int posicao = PontoDAO.obterInstancia().deleteOnList(ponto);
                         Intent intent = new Intent();
                         intent.putExtra("posicaoDoObjetoExcluido", posicao);
+                        setResult(202, intent);
                         finish();
                     }
                 }).setNegativeButton("Cancelar", null).show();
