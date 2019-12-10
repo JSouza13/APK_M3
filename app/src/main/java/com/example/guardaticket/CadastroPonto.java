@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -19,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.guardaticket.model.DateDAO;
+import com.example.guardaticket.model.DateModel;
 import com.example.guardaticket.model.PontoDAO;
 import com.example.guardaticket.model.PontoModel;
 
@@ -31,6 +34,7 @@ import java.util.UUID;
 public class CadastroPonto extends AppCompatActivity {
 
     private PontoModel ponto;
+    private DateModel dateModel;
     private String idPonto;
     private EditText editData;
     private TimePicker timePicker;
@@ -57,15 +61,16 @@ public class CadastroPonto extends AppCompatActivity {
         idPonto = getIntent().getStringExtra("pontoId");
         if(idPonto == null){
             ponto = new PontoModel();
+            dateModel = new DateModel();
             Button btnExcluir = findViewById(R.id.btnExcluir);
             btnExcluir.setVisibility(View.INVISIBLE);
 
             Calendar dataSelecionada = Calendar.getInstance();
 
             dataSelecionada.set(dataSelecionada.get(Calendar.YEAR), dataSelecionada.get(Calendar.MONTH), dataSelecionada.get(Calendar.DAY_OF_MONTH));
-
             ponto.setDate(dataSelecionada);
 
+            dateModel.setDate(dataSelecionada);
             DateFormat formatter = android.text.format.DateFormat.getDateFormat(getApplicationContext());
             String  dataSelecionadaFormatada = formatter.format(dataSelecionada.getTime());
             editData.setText(dataSelecionadaFormatada);
@@ -89,7 +94,7 @@ public class CadastroPonto extends AppCompatActivity {
         ponto.setMinutos(String.format("%02d", timePicker.getMinute()));
 
         if (editData.getText().equals("")) {
-            Toast.makeText(this, "Favor informe a data", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Favor informe a data", Toast.LENGTH_LONG).show();
             return;
         }
 
