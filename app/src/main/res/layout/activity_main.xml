@@ -28,7 +28,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="291dp"
-        android:text="Confira seus registros de pontos :D"
+        android:text="@string/confira_seus_registros_de_pontos_d"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="30sp"
