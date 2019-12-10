@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.guardaticket">
 
-    <uses-feature android:name="android.hardware.camera"
-        android:required="true" />
-
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -13,6 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ListaPontosCadastrados"></activity>
         <activity android:name=".RegistroPontos" />
         <activity android:name=".CadastroPonto" />
         <activity android:name=".MainActivity">
@@ -22,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -32,5 +31,9 @@
                 android:resource="@xml/caminho_fotografias" />
         </provider>
     </application>
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
 </manifest>

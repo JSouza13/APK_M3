@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GuardaTicket</string>
+    <string name="app_name">Carteiro de pontos</string>
     <string name="salvar">Salvar</string>
     <string name="excluir">Excluir</string>
     <string name="data">Informe a data</string>
@@ -8,4 +8,7 @@
     <string name="qual_foi_o_hor_rio_de_entrada">Qual foi o horário de entrada?</string>
     <string name="todo">TODO</string>
     <string name="informe_a_data">Informe a data</string>
+    <string name="horario">Horario</string>
+    <string name="dia">Dia</string>
+    <string name="dia_de_registrado">Dia de registrado</string>
 </resources>

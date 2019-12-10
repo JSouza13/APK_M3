@@ -11,7 +11,7 @@
     <TimePicker
         android:id="@+id/timePicker1"
         android:layout_width="432dp"
-        android:layout_height="329dp"
+        android:layout_height="330dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,9 +21,9 @@
         android:id="@+id/textData"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="5dp"
         android:hint="@string/que_dia_hoje"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,12 +31,12 @@
 
     <ImageView
         android:id="@+id/btnFoto"
-        android:layout_width="273dp"
-        android:layout_height="162dp"
+        android:layout_width="145dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
         android:contentDescription="@string/todo"
         android:fadeScrollbars="false"
         android:isScrollContainer="false"
@@ -64,33 +64,26 @@
 
     <Button
         android:id="@+id/btnExcluir"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="100dp"
         android:backgroundTint="@color/error_color"
         android:onClick="excluir"
         android:text="@string/excluir"
         android:textColor="#fff"
-        app:layout_constraintBottom_toTopOf="@+id/btnSalvar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="667dp" />
 
     <Button
         android:id="@+id/btnSalvar"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
+        android:layout_marginEnd="100dp"
         android:backgroundTint="#3B495A"
         android:onClick="salvar"
         android:text="@string/salvar"
         android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
