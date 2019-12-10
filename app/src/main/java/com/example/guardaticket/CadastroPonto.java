@@ -62,6 +62,10 @@ public class CadastroPonto extends AppCompatActivity {
 
             Calendar dataSelecionada = Calendar.getInstance();
 
+            dataSelecionada.set(dataSelecionada.get(Calendar.YEAR), dataSelecionada.get(Calendar.MONTH), dataSelecionada.get(Calendar.DAY_OF_MONTH));
+
+            ponto.setDate(dataSelecionada);
+
             DateFormat formatter = android.text.format.DateFormat.getDateFormat(getApplicationContext());
             String  dataSelecionadaFormatada = formatter.format(dataSelecionada.getTime());
             editData.setText(dataSelecionadaFormatada);
@@ -69,8 +73,8 @@ public class CadastroPonto extends AppCompatActivity {
         else{
             ponto = PontoDAO.obterInstancia().getObjectId(idPonto);
 
-            timePicker.setHour(ponto.getHoras());
-            timePicker.setMinute(ponto.getMinutos());
+            timePicker.setHour(Integer.parseInt(ponto.getHoras()));
+            timePicker.setMinute(Integer.parseInt(ponto.getMinutos()));
 
             attFotografiaNaTela();
 
@@ -81,8 +85,8 @@ public class CadastroPonto extends AppCompatActivity {
     }
 
     public void salvar(View v){
-        ponto.setHoras(timePicker.getHour());
-        ponto.setMinutos(timePicker.getMinute());
+        ponto.setHoras(String.format("%02d", timePicker.getHour()));
+        ponto.setMinutos(String.format("%02d", timePicker.getMinute()));
 
         if (editData.getText().equals("")) {
             Toast.makeText(this, "Favor informe a data", Toast.LENGTH_LONG);
@@ -187,7 +191,6 @@ public class CadastroPonto extends AppCompatActivity {
 
         if (requestCode == 1){
             if(resultCode == RESULT_OK){
-
                 ponto.setFoto( caminhoDaFoto );
                 attFotografiaNaTela();
 

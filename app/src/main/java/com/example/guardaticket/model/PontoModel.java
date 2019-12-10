@@ -14,8 +14,8 @@ public class PontoModel extends RealmObject {
     @PrimaryKey
     private String id;
     private Date data;
-    private int horas;
-    private int minutos;
+    private String horas;
+    private String minutos;
     private String foto;
 
     @Ignore
@@ -30,19 +30,19 @@ public class PontoModel extends RealmObject {
         return id;
     }
 
-    public int getHoras() {
+    public String getHoras() {
         return horas;
     }
 
-    public void setHoras(int horas) {
+    public void setHoras(String horas) {
         this.horas = horas;
     }
 
-    public int getMinutos() {
+    public String getMinutos() {
         return minutos;
     }
 
-    public void setMinutos(int minutos) {
+    public void setMinutos(String minutos) {
         this.minutos = minutos;
     }
 
