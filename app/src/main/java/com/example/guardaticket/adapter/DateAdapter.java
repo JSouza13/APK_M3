@@ -8,10 +8,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.guardaticket.R;
+import com.example.guardaticket.model.DateDAO;
+import com.example.guardaticket.model.DateModel;
 import com.example.guardaticket.model.PontoDAO;
 import com.example.guardaticket.model.PontoModel;
 
-public class PontoAdapter extends RecyclerView.Adapter {
+public class DateAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
@@ -20,20 +22,20 @@ public class PontoAdapter extends RecyclerView.Adapter {
                 R.layout.activity_lista_pontos_cadastrados, parent, false
         );
 
-        PontoViewHolder gaveta = new PontoViewHolder(elemento);
+        DateViewHolder gaveta = new DateViewHolder(elemento);
         return gaveta;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        PontoModel ponto = PontoDAO.obterInstancia().getList().get(position);
-        PontoViewHolder gaveta = (PontoViewHolder) holder;
+        DateModel date = DateDAO.obtemInstancia().getDateList().get(position);
+        DateViewHolder gaveta = (DateViewHolder) holder;
 
-        gaveta.atualizaGaveta(ponto);
+        gaveta.atualizaGaveta(date);
     }
 
     @Override
     public int getItemCount() {
-        return PontoDAO.obterInstancia().getList().size();
+        return DateDAO.obtemInstancia().getDateList().size();
     }
 }

@@ -29,6 +29,7 @@ public class RegistroPontos extends AppCompatActivity {
         rvPontos.setLayoutManager(new LinearLayoutManager(this));
         rvPontos.setAdapter(adapter);
 
+
         FloatingActionButton floatingActionButton = findViewById(R.id.btnAdicionar);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override

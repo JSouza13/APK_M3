@@ -13,7 +13,6 @@ import com.example.guardaticket.R;
 import com.example.guardaticket.RegistroPontos;
 import com.example.guardaticket.model.PontoModel;
 
-import java.net.URI;
 import java.text.DateFormat;
 
 public class PontoViewHolder extends RecyclerView.ViewHolder {
@@ -51,6 +50,8 @@ public class PontoViewHolder extends RecyclerView.ViewHolder {
 
         if(ponto.getFoto() != null){
             image.setImageURI(Uri.parse(ponto.getFoto()));
+        }else{
+            image.setVisibility(View.INVISIBLE);
         }
 
         hora.setText(ponto.getHoras() + ":" + ponto.getMinutos());
