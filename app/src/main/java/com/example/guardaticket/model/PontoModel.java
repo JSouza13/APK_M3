@@ -21,6 +21,7 @@ public class PontoModel extends RealmObject {
     @Ignore
     private Calendar date;
 
+
     public PontoModel(){
         id = UUID.randomUUID().toString();
 
@@ -67,4 +68,5 @@ public class PontoModel extends RealmObject {
         this.date = date;
         this.data = date.getTime();
     }
+
 }
