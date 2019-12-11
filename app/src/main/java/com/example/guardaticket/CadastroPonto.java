@@ -182,6 +182,7 @@ public class CadastroPonto extends AppCompatActivity {
     private void attFotografiaNaTela(){
         if(ponto.getFoto() != null){
             imageView.setImageURI(Uri.parse(ponto.getFoto()));
+            imageView.setRotation(-90);
         }
     }
 

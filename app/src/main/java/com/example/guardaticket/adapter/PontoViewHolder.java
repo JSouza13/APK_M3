@@ -50,6 +50,7 @@ public class PontoViewHolder extends RecyclerView.ViewHolder {
 
         if(ponto.getFoto() != null){
             image.setImageURI(Uri.parse(ponto.getFoto()));
+            image.setRotation(-90);
         }else{
             image.setVisibility(View.INVISIBLE);
         }

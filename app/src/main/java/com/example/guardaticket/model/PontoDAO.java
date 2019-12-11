@@ -1,6 +1,7 @@
 package com.example.guardaticket.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -15,6 +16,14 @@ public class PontoDAO {
     public ArrayList<PontoModel> getList() {
         Realm realm = Realm.getDefaultInstance();
         RealmResults list = realm.where(PontoModel.class).findAll();
+        database.clear();
+        database.addAll(realm.copyFromRealm(list));
+        return database;
+    }
+
+    public ArrayList<PontoModel> getDateList(Date date){
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults list = realm.where(PontoModel.class).equalTo("data", date).findAll();
         database.clear();
         database.addAll(realm.copyFromRealm(list));
         return database;

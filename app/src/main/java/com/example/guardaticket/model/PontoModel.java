@@ -13,6 +13,7 @@ public class PontoModel extends RealmObject {
 
     @PrimaryKey
     private String id;
+
     private Date data;
     private String horas;
     private String minutos;

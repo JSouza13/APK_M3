@@ -8,14 +8,6 @@
 
     <!-- Other components and views -->
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:minHeight="45dp"
-        app:backgroundTint="@color/colorPrimary" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnRegistros"
         android:layout_width="wrap_content"
@@ -33,5 +25,24 @@
         android:textColor="#000"
         android:textSize="30sp"
         android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textQtd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:text="@string/confira_seus_registros_de_pontos_d"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:minHeight="45dp"
+        app:backgroundTint="@color/colorPrimary" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
